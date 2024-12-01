@@ -20,8 +20,12 @@ public class StatusManager {
 
     public void addPlayer(UUID uuid) {
         Storage storage = plugin.getStorage();
-        storage.add("Status", JSON.of("uuid", uuid.toString()).append("keep", false).get());
-        map.put(uuid, false);
+        storage.get("Status", Pair.of("uuid", uuid.toString())).thenAccept(result -> {
+            if (result == null || result.isEmpty()) {
+                storage.add("Status", JSON.of("uuid", uuid.toString()).append("keep", false));
+                map.put(uuid, false);
+            } else map.put(uuid, result.get(0).get("keep").getAsBoolean());
+        });
     }
 
     public void removePlayer(UUID uuid) {
