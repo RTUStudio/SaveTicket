@@ -7,7 +7,7 @@ import kr.rtuserver.keepinv.manager.StatusManager;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
 
-public class PlaceholderAPI extends RSPlaceholder {
+public class PlaceholderAPI extends RSPlaceholder<RSKeepInv> {
 
     private final StatusManager manager;
     private final TranslationConfiguration message;

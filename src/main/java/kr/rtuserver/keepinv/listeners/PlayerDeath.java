@@ -13,7 +13,7 @@ import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
-public class PlayerDeath extends RSListener {
+public class PlayerDeath extends RSListener<RSKeepInv> {
 
     private final KeepInventoryConfig config;
     private final StatusManager manager;

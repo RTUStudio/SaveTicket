@@ -14,7 +14,7 @@ import org.bukkit.inventory.ItemStack;
 
 import java.util.List;
 
-public class ItemInteract extends RSListener {
+public class ItemInteract extends RSListener<RSKeepInv> {
 
     private final KeepInventoryConfig config;
     private final StatusManager manager;

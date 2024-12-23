@@ -5,7 +5,7 @@ import kr.rtuserver.framework.bukkit.api.command.RSCommandData;
 import kr.rtuserver.keepinv.RSKeepInv;
 import kr.rtuserver.keepinv.config.KeepInventoryConfig;
 
-public class Command extends RSCommand {
+public class Command extends RSCommand<RSKeepInv> {
 
     private final KeepInventoryConfig config;
 
