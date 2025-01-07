@@ -10,7 +10,7 @@ public class Command extends RSCommand<RSKeepInv> {
     private final KeepInventoryConfig config;
 
     public Command(RSKeepInv plugin) {
-        super(plugin, "rski", true);
+        super(plugin, "rski");
         this.config = plugin.getKeepInventoryConfig();
     }
 

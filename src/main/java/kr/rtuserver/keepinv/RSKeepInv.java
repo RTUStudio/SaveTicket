@@ -33,7 +33,7 @@ public class RSKeepInv extends RSPlugin {
         keepInventoryConfig = new KeepInventoryConfig(this);
         statusManager = new StatusManager(this);
 
-        registerCommand(new Command(this));
+        registerCommand(new Command(this), true);
 
         registerEvent(new PlayerJoinQuit(this));
         registerEvent(new ItemInteract(this));
