@@ -2,10 +2,10 @@ package com.github.ipecter.rtustudio.saveticket.listeners;
 
 import com.github.ipecter.rtustudio.saveticket.SaveTicket;
 import com.github.ipecter.rtustudio.saveticket.config.KeepInventoryConfig;
-import kr.rtuserver.framework.bukkit.api.listener.RSListener;
-import kr.rtuserver.framework.bukkit.api.utility.compatible.ItemCompat;
-import kr.rtuserver.framework.bukkit.api.utility.player.PlayerChat;
 import com.github.ipecter.rtustudio.saveticket.manager.StatusManager;
+import kr.rtuserver.framework.bukkit.api.listener.RSListener;
+import kr.rtuserver.framework.bukkit.api.registry.CustomItems;
+import kr.rtuserver.framework.bukkit.api.utility.player.PlayerChat;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.block.Action;
@@ -32,7 +32,7 @@ public class ItemInteract extends RSListener<SaveTicket> {
         Player player = e.getPlayer();
         ItemStack itemStack = e.getItem();
         if (itemStack != null) {
-            if (ItemCompat.to(itemStack).equalsIgnoreCase(config.getItem())) {
+            if (CustomItems.to(itemStack).equalsIgnoreCase(config.getItem())) {
                 PlayerChat chat = PlayerChat.of(getPlugin());
                 if (manager.getMap().getOrDefault(player.getUniqueId(), false)) {
                     chat.announce(player, getMessage().get(player, "alreadyUsed"));

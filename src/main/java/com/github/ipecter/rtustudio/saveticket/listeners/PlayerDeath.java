@@ -2,10 +2,10 @@ package com.github.ipecter.rtustudio.saveticket.listeners;
 
 import com.github.ipecter.rtustudio.saveticket.SaveTicket;
 import com.github.ipecter.rtustudio.saveticket.config.KeepInventoryConfig;
-import kr.rtuserver.framework.bukkit.api.listener.RSListener;
-import kr.rtuserver.framework.bukkit.api.utility.compatible.ItemCompat;
-import kr.rtuserver.framework.bukkit.api.utility.player.PlayerChat;
 import com.github.ipecter.rtustudio.saveticket.manager.StatusManager;
+import kr.rtuserver.framework.bukkit.api.listener.RSListener;
+import kr.rtuserver.framework.bukkit.api.registry.CustomItems;
+import kr.rtuserver.framework.bukkit.api.utility.player.PlayerChat;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.entity.PlayerDeathEvent;
@@ -28,7 +28,7 @@ public class PlayerDeath extends RSListener<SaveTicket> {
         Player player = e.getEntity();
         String item = config.getItem();
         if (config.isAutoProtect()) {
-            ItemStack itemStack = ItemCompat.from(item);
+            ItemStack itemStack = CustomItems.from(item);
             if (itemStack == null) return;
             if (player.getInventory().containsAtLeast(itemStack, 1)) {
                 manager.deactivate(player.getUniqueId());
