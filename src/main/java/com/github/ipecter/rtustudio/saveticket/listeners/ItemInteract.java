@@ -1,11 +1,11 @@
-package kr.rtuserver.keepinv.listeners;
+package com.github.ipecter.rtustudio.saveticket.listeners;
 
+import com.github.ipecter.rtustudio.saveticket.SaveTicket;
+import com.github.ipecter.rtustudio.saveticket.config.KeepInventoryConfig;
 import kr.rtuserver.framework.bukkit.api.listener.RSListener;
 import kr.rtuserver.framework.bukkit.api.utility.compatible.ItemCompat;
 import kr.rtuserver.framework.bukkit.api.utility.player.PlayerChat;
-import kr.rtuserver.keepinv.RSKeepInv;
-import kr.rtuserver.keepinv.config.KeepInventoryConfig;
-import kr.rtuserver.keepinv.manager.StatusManager;
+import com.github.ipecter.rtustudio.saveticket.manager.StatusManager;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.block.Action;
@@ -14,12 +14,12 @@ import org.bukkit.inventory.ItemStack;
 
 import java.util.List;
 
-public class ItemInteract extends RSListener<RSKeepInv> {
+public class ItemInteract extends RSListener<SaveTicket> {
 
     private final KeepInventoryConfig config;
     private final StatusManager manager;
 
-    public ItemInteract(RSKeepInv plugin) {
+    public ItemInteract(SaveTicket plugin) {
         super(plugin);
         this.config = plugin.getKeepInventoryConfig();
         this.manager = plugin.getStatusManager();

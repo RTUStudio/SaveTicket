@@ -1,21 +1,21 @@
-package kr.rtuserver.keepinv.config;
+package com.github.ipecter.rtustudio.saveticket.config;
 
 import kr.rtuserver.framework.bukkit.api.config.RSConfiguration;
-import kr.rtuserver.keepinv.RSKeepInv;
+import com.github.ipecter.rtustudio.saveticket.SaveTicket;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
-public class KeepInventoryConfig extends RSConfiguration<RSKeepInv> {
+public class KeepInventoryConfig extends RSConfiguration<SaveTicket> {
 
     private String item = "minecraft:barrier";
     private boolean autoProtect = true;
     private boolean keepInventory = true;
     private boolean keepLevel = true;
 
-    public KeepInventoryConfig(RSKeepInv plugin) {
-        super(plugin, "KeepInventory.yml", 1);
+    public KeepInventoryConfig(SaveTicket plugin) {
+        super(plugin, "SaveTicket.yml", 1);
         setup(this);
     }
 

@@ -1,17 +1,17 @@
-package kr.rtuserver.keepinv.listeners;
+package com.github.ipecter.rtustudio.saveticket.listeners;
 
+import com.github.ipecter.rtustudio.saveticket.SaveTicket;
 import kr.rtuserver.framework.bukkit.api.listener.RSListener;
-import kr.rtuserver.keepinv.RSKeepInv;
-import kr.rtuserver.keepinv.manager.StatusManager;
+import com.github.ipecter.rtustudio.saveticket.manager.StatusManager;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 
-public class PlayerJoinQuit extends RSListener<RSKeepInv> {
+public class PlayerJoinQuit extends RSListener<SaveTicket> {
 
     private final StatusManager manager;
 
-    public PlayerJoinQuit(RSKeepInv plugin) {
+    public PlayerJoinQuit(SaveTicket plugin) {
         super(plugin);
         this.manager = plugin.getStatusManager();
     }

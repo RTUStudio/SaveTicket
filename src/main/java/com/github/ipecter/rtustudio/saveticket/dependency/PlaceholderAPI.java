@@ -1,18 +1,18 @@
-package kr.rtuserver.keepinv.dependency;
+package com.github.ipecter.rtustudio.saveticket.dependency;
 
+import com.github.ipecter.rtustudio.saveticket.SaveTicket;
 import kr.rtuserver.framework.bukkit.api.config.impl.TranslationConfiguration;
 import kr.rtuserver.framework.bukkit.api.dependencies.RSPlaceholder;
-import kr.rtuserver.keepinv.RSKeepInv;
-import kr.rtuserver.keepinv.manager.StatusManager;
+import com.github.ipecter.rtustudio.saveticket.manager.StatusManager;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
 
-public class PlaceholderAPI extends RSPlaceholder<RSKeepInv> {
+public class PlaceholderAPI extends RSPlaceholder<SaveTicket> {
 
     private final StatusManager manager;
     private final TranslationConfiguration message;
 
-    public PlaceholderAPI(RSKeepInv plugin) {
+    public PlaceholderAPI(SaveTicket plugin) {
         super(plugin);
         this.manager = plugin.getStatusManager();
         this.message = plugin.getConfigurations().getMessage();

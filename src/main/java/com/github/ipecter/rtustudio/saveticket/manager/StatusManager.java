@@ -1,8 +1,8 @@
-package kr.rtuserver.keepinv.manager;
+package com.github.ipecter.rtustudio.saveticket.manager;
 
+import com.github.ipecter.rtustudio.saveticket.SaveTicket;
 import kr.rtuserver.framework.bukkit.api.storage.Storage;
 import kr.rtuserver.framework.bukkit.api.utility.platform.JSON;
-import kr.rtuserver.keepinv.RSKeepInv;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.lang3.tuple.Pair;
@@ -14,7 +14,7 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class StatusManager {
 
-    private final RSKeepInv plugin;
+    private final SaveTicket plugin;
     @Getter
     private final Map<UUID, Boolean> map = new HashMap<>();
 

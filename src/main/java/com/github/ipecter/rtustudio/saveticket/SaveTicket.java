@@ -1,30 +1,23 @@
-package kr.rtuserver.keepinv;
+package com.github.ipecter.rtustudio.saveticket;
 
+import com.github.ipecter.rtustudio.saveticket.config.KeepInventoryConfig;
+import com.github.ipecter.rtustudio.saveticket.dependency.PlaceholderAPI;
+import com.github.ipecter.rtustudio.saveticket.listeners.ItemInteract;
+import com.github.ipecter.rtustudio.saveticket.listeners.PlayerDeath;
 import kr.rtuserver.framework.bukkit.api.RSPlugin;
-import kr.rtuserver.keepinv.commands.Command;
-import kr.rtuserver.keepinv.config.KeepInventoryConfig;
-import kr.rtuserver.keepinv.dependency.PlaceholderAPI;
-import kr.rtuserver.keepinv.listeners.ItemInteract;
-import kr.rtuserver.keepinv.listeners.PlayerDeath;
-import kr.rtuserver.keepinv.listeners.PlayerJoinQuit;
-import kr.rtuserver.keepinv.manager.StatusManager;
+import com.github.ipecter.rtustudio.saveticket.commands.Command;
+import com.github.ipecter.rtustudio.saveticket.listeners.PlayerJoinQuit;
+import com.github.ipecter.rtustudio.saveticket.manager.StatusManager;
 import lombok.Getter;
 
-public class RSKeepInv extends RSPlugin {
+public class SaveTicket extends RSPlugin {
 
-    @Getter
-    private static RSKeepInv instance;
     @Getter
     private KeepInventoryConfig keepInventoryConfig;
     @Getter
     private StatusManager statusManager;
 
     private PlaceholderAPI placeholder;
-
-    @Override
-    public void load() {
-        instance = this;
-    }
 
     @Override
     public void enable() {
