@@ -1,4 +1,4 @@
-package com.github.ipecter.rtustudio.saveticket.config;
+package com.github.ipecter.rtustudio.saveticket.configuration;
 
 import kr.rtuserver.framework.bukkit.api.config.RSConfiguration;
 import com.github.ipecter.rtustudio.saveticket.SaveTicket;

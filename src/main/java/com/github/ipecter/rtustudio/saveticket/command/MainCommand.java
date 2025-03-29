@@ -1,16 +1,16 @@
-package com.github.ipecter.rtustudio.saveticket.commands;
+package com.github.ipecter.rtustudio.saveticket.command;
 
 import com.github.ipecter.rtustudio.saveticket.SaveTicket;
-import com.github.ipecter.rtustudio.saveticket.config.KeepInventoryConfig;
+import com.github.ipecter.rtustudio.saveticket.configuration.KeepInventoryConfig;
 import kr.rtuserver.framework.bukkit.api.command.RSCommand;
 import kr.rtuserver.framework.bukkit.api.command.RSCommandData;
 
-public class Command extends RSCommand<SaveTicket> {
+public class MainCommand extends RSCommand<SaveTicket> {
 
     private final KeepInventoryConfig config;
 
-    public Command(SaveTicket plugin) {
-        super(plugin, "rski");
+    public MainCommand(SaveTicket plugin) {
+        super(plugin, "saveticket");
         this.config = plugin.getKeepInventoryConfig();
     }
 

@@ -1,4 +1,4 @@
-package com.github.ipecter.rtustudio.saveticket.listeners;
+package com.github.ipecter.rtustudio.saveticket.listener;
 
 import com.github.ipecter.rtustudio.saveticket.SaveTicket;
 import kr.rtuserver.framework.bukkit.api.listener.RSListener;

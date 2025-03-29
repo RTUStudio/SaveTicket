@@ -1,12 +1,12 @@
 package com.github.ipecter.rtustudio.saveticket;
 
-import com.github.ipecter.rtustudio.saveticket.config.KeepInventoryConfig;
+import com.github.ipecter.rtustudio.saveticket.configuration.KeepInventoryConfig;
 import com.github.ipecter.rtustudio.saveticket.dependency.PlaceholderAPI;
-import com.github.ipecter.rtustudio.saveticket.listeners.ItemInteract;
-import com.github.ipecter.rtustudio.saveticket.listeners.PlayerDeath;
+import com.github.ipecter.rtustudio.saveticket.listener.ItemInteract;
+import com.github.ipecter.rtustudio.saveticket.listener.PlayerDeath;
 import kr.rtuserver.framework.bukkit.api.RSPlugin;
-import com.github.ipecter.rtustudio.saveticket.commands.Command;
-import com.github.ipecter.rtustudio.saveticket.listeners.PlayerJoinQuit;
+import com.github.ipecter.rtustudio.saveticket.command.MainCommand;
+import com.github.ipecter.rtustudio.saveticket.listener.PlayerJoinQuit;
 import com.github.ipecter.rtustudio.saveticket.manager.StatusManager;
 import lombok.Getter;
 
@@ -26,7 +26,7 @@ public class SaveTicket extends RSPlugin {
         keepInventoryConfig = new KeepInventoryConfig(this);
         statusManager = new StatusManager(this);
 
-        registerCommand(new Command(this), true);
+        registerCommand(new MainCommand(this), true);
 
         registerEvent(new PlayerJoinQuit(this));
         registerEvent(new ItemInteract(this));

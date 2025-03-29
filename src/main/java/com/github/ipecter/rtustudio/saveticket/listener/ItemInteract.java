@@ -1,7 +1,7 @@
-package com.github.ipecter.rtustudio.saveticket.listeners;
+package com.github.ipecter.rtustudio.saveticket.listener;
 
 import com.github.ipecter.rtustudio.saveticket.SaveTicket;
-import com.github.ipecter.rtustudio.saveticket.config.KeepInventoryConfig;
+import com.github.ipecter.rtustudio.saveticket.configuration.KeepInventoryConfig;
 import com.github.ipecter.rtustudio.saveticket.manager.StatusManager;
 import kr.rtuserver.framework.bukkit.api.listener.RSListener;
 import kr.rtuserver.framework.bukkit.api.registry.CustomItems;
