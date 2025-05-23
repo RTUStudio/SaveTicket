@@ -1,8 +1,8 @@
 package com.github.ipecter.rtustudio.saveticket.manager;
 
 import com.github.ipecter.rtustudio.saveticket.SaveTicket;
+import kr.rtuserver.framework.bukkit.api.platform.JSON;
 import kr.rtuserver.framework.bukkit.api.storage.Storage;
-import kr.rtuserver.framework.bukkit.api.utility.platform.JSON;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.lang3.tuple.Pair;
@@ -22,7 +22,7 @@ public class StatusManager {
         Storage storage = plugin.getStorage();
         storage.get("Status", Pair.of("uuid", uuid.toString())).thenAccept(result -> {
             if (result == null || result.isEmpty()) {
-                storage.add("Status", JSON.of("uuid", uuid.toString()).append("keep", false));
+                storage.add("Status", JSON.of("uuid", uuid.toString()).append("keep", false).get());
                 map.put(uuid, false);
             } else map.put(uuid, result.get(0).get("keep").getAsBoolean());
         });
@@ -34,13 +34,13 @@ public class StatusManager {
 
     public void activate(UUID uuid) {
         Storage storage = plugin.getStorage();
-        storage.set("Status", Pair.of("uuid", uuid.toString()), Pair.of("keep", true));
+        storage.set("Status", Pair.of("uuid", uuid.toString()), JSON.of("keep", true).get());
         map.put(uuid, true);
     }
 
     public void deactivate(UUID uuid) {
         Storage storage = plugin.getStorage();
-        storage.set("Status", Pair.of("uuid", uuid.toString()), Pair.of("keep", false));
+        storage.set("Status", Pair.of("uuid", uuid.toString()), JSON.of("keep", false).get());
         map.put(uuid, false);
     }
 

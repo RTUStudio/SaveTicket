@@ -21,7 +21,7 @@ public class SaveTicket extends RSPlugin {
 
     @Override
     public void enable() {
-        getConfigurations().initStorage("Status");
+        getConfigurations().getStorage().init("Status");
 
         keepInventoryConfig = new KeepInventoryConfig(this);
         statusManager = new StatusManager(this);

@@ -2,7 +2,7 @@ package com.github.ipecter.rtustudio.saveticket.dependency;
 
 import com.github.ipecter.rtustudio.saveticket.SaveTicket;
 import com.github.ipecter.rtustudio.saveticket.manager.StatusManager;
-import kr.rtuserver.framework.bukkit.api.dependency.RSPlaceholder;
+import kr.rtuserver.framework.bukkit.api.integration.RSPlaceholder;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
 

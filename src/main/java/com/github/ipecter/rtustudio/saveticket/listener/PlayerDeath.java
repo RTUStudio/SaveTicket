@@ -5,7 +5,6 @@ import com.github.ipecter.rtustudio.saveticket.configuration.KeepInventoryConfig
 import com.github.ipecter.rtustudio.saveticket.manager.StatusManager;
 import kr.rtuserver.framework.bukkit.api.listener.RSListener;
 import kr.rtuserver.framework.bukkit.api.registry.CustomItems;
-import kr.rtuserver.framework.bukkit.api.utility.player.PlayerChat;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.entity.PlayerDeathEvent;
@@ -24,7 +23,6 @@ public class PlayerDeath extends RSListener<SaveTicket> {
 
     @EventHandler
     public void onPlayerDeath(PlayerDeathEvent e) {
-        PlayerChat chat = PlayerChat.of(getPlugin());
         Player player = e.getEntity();
         String item = config.getItem();
         if (config.isAutoProtect()) {
@@ -37,7 +35,7 @@ public class PlayerDeath extends RSListener<SaveTicket> {
                 e.setKeepLevel(config.isKeepLevel());
                 e.getDrops().clear();
                 e.setDroppedExp(0);
-                chat.announce(player, getMessage().get(player, "trigger"));
+                chat().announce(player, getMessage().get(player, "trigger"));
             }
         } else {
             if (manager.getMap().getOrDefault(player.getUniqueId(), false)) {
@@ -46,7 +44,7 @@ public class PlayerDeath extends RSListener<SaveTicket> {
                 e.setKeepLevel(config.isKeepLevel());
                 e.getDrops().clear();
                 e.setDroppedExp(0);
-                chat.announce(player, getMessage().get(player, "trigger"));
+                chat().announce(player, getMessage().get(player, "trigger"));
             }
         }
     }

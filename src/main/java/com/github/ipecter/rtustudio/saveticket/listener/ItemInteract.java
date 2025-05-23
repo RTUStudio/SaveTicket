@@ -5,7 +5,6 @@ import com.github.ipecter.rtustudio.saveticket.configuration.KeepInventoryConfig
 import com.github.ipecter.rtustudio.saveticket.manager.StatusManager;
 import kr.rtuserver.framework.bukkit.api.listener.RSListener;
 import kr.rtuserver.framework.bukkit.api.registry.CustomItems;
-import kr.rtuserver.framework.bukkit.api.utility.player.PlayerChat;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.block.Action;
@@ -33,13 +32,12 @@ public class ItemInteract extends RSListener<SaveTicket> {
         ItemStack itemStack = e.getItem();
         if (itemStack != null) {
             if (CustomItems.to(itemStack).equalsIgnoreCase(config.getItem())) {
-                PlayerChat chat = PlayerChat.of(getPlugin());
                 if (manager.getMap().getOrDefault(player.getUniqueId(), false)) {
-                    chat.announce(player, getMessage().get(player, "alreadyUsed"));
+                    chat().announce(player, getMessage().get(player, "alreadyUsed"));
                 } else {
                     manager.activate(player.getUniqueId());
                     itemStack.setAmount(itemStack.getAmount() - 1);
-                    chat.announce(player, getMessage().get(player, "useItem"));
+                    chat().announce(player, getMessage().get(player, "useItem"));
                 }
             }
         }
