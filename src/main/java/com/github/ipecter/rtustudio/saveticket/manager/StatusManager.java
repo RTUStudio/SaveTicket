@@ -20,7 +20,7 @@ public class StatusManager {
 
     public void addPlayer(UUID uuid) {
         Storage storage = plugin.getStorage();
-        storage.get("Status", Pair.of("uuid", uuid.toString())).thenAccept(result -> {
+        storage.get("Status", JSON.of("uuid", uuid.toString())).thenAccept(result -> {
             if (result == null || result.isEmpty()) {
                 storage.add("Status", JSON.of("uuid", uuid.toString()).append("keep", false).get());
                 map.put(uuid, false);
@@ -34,13 +34,13 @@ public class StatusManager {
 
     public void activate(UUID uuid) {
         Storage storage = plugin.getStorage();
-        storage.set("Status", Pair.of("uuid", uuid.toString()), JSON.of("keep", true).get());
+        storage.set("Status", JSON.of("uuid", uuid.toString()), JSON.of("keep", true));
         map.put(uuid, true);
     }
 
     public void deactivate(UUID uuid) {
         Storage storage = plugin.getStorage();
-        storage.set("Status", Pair.of("uuid", uuid.toString()), JSON.of("keep", false).get());
+        storage.set("Status", JSON.of("uuid", uuid.toString()), JSON.of("keep", false));
         map.put(uuid, false);
     }
 
