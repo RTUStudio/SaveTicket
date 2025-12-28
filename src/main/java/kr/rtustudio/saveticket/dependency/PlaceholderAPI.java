@@ -1,12 +1,12 @@
-package com.github.ipecter.rtustudio.saveticket.dependency;
+package kr.rtustudio.saveticket.dependency;
 
-import com.github.ipecter.rtustudio.saveticket.SaveTicket;
-import com.github.ipecter.rtustudio.saveticket.manager.StatusManager;
-import kr.rtuserver.framework.bukkit.api.integration.RSPlaceholder;
+import kr.rtustudio.saveticket.SaveTicket;
+import kr.rtustudio.saveticket.manager.StatusManager;
+import kr.rtustudio.framework.bukkit.api.integration.wrapper.PlaceholderWrapper;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
 
-public class PlaceholderAPI extends RSPlaceholder<SaveTicket> {
+public class PlaceholderAPI extends PlaceholderWrapper<SaveTicket> {
 
     private final StatusManager manager;
 
@@ -16,7 +16,7 @@ public class PlaceholderAPI extends RSPlaceholder<SaveTicket> {
     }
 
     @Override
-    public String request(OfflinePlayer offlinePlayer, String[] params) {
+    public String onRequest(OfflinePlayer offlinePlayer, String[] params) {
         if ("status".equalsIgnoreCase(params[0])) {
             if (manager.getMap().getOrDefault(offlinePlayer.getUniqueId(), false)) {
                 if (offlinePlayer instanceof Player player) {

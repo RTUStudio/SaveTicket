@@ -1,0 +1,4 @@
+saveticket:
+  name: "saveticket"
+  description: "SaveTicket main command"
+  usage: "/saveticket"

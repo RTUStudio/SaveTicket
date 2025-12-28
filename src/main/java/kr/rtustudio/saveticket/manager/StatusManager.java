@@ -1,8 +1,8 @@
-package com.github.ipecter.rtustudio.saveticket.manager;
+package kr.rtustudio.saveticket.manager;
 
-import com.github.ipecter.rtustudio.saveticket.SaveTicket;
-import kr.rtuserver.framework.bukkit.api.platform.JSON;
-import kr.rtuserver.framework.bukkit.api.storage.Storage;
+import kr.rtustudio.saveticket.SaveTicket;
+import kr.rtustudio.framework.bukkit.api.platform.JSON;
+import kr.rtustudio.framework.bukkit.api.storage.Storage;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 

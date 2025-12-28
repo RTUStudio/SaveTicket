@@ -1,12 +1,13 @@
-package com.github.ipecter.rtustudio.saveticket.listener;
+package kr.rtustudio.saveticket.listener;
 
-import com.github.ipecter.rtustudio.saveticket.SaveTicket;
-import com.github.ipecter.rtustudio.saveticket.manager.StatusManager;
-import kr.rtuserver.framework.bukkit.api.listener.RSListener;
+import kr.rtustudio.saveticket.SaveTicket;
+import kr.rtustudio.saveticket.manager.StatusManager;
+import kr.rtustudio.framework.bukkit.api.listener.RSListener;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 
+@SuppressWarnings("unused")
 public class PlayerJoinQuit extends RSListener<SaveTicket> {
 
     private final StatusManager manager;
