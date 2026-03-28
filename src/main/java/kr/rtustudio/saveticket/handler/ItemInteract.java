@@ -1,4 +1,4 @@
-package kr.rtustudio.saveticket.listener;
+package kr.rtustudio.saveticket.handler;
 
 import kr.rtustudio.saveticket.SaveTicket;
 import kr.rtustudio.saveticket.configuration.GlobalConfig;
@@ -34,11 +34,11 @@ public class ItemInteract extends RSListener<SaveTicket> {
         if (itemStack != null) {
             if (CustomItems.to(itemStack).equalsIgnoreCase(config.getItem())) {
                 if (manager.getMap().getOrDefault(player.getUniqueId(), false)) {
-                    chat().announce(player, getMessage().get(player, "alreadyUsed"));
+                    notifier.announce(player, message.get(player, "alreadyUsed"));
                 } else {
                     manager.activate(player.getUniqueId());
                     itemStack.setAmount(itemStack.getAmount() - 1);
-                    chat().announce(player, getMessage().get(player, "useItem"));
+                    notifier.announce(player, message.get(player, "useItem"));
                 }
             }
         }

@@ -1,0 +1,6 @@
+trigger: "<white>Your inventory and experience have been preserved</white>"
+use-item: "<white>Inventory protection has been activated</white>"
+already-used: "<red>Inventory protection is already active</red>"
+placeholder:
+  active: "Active"
+  inactive: "Inactive"

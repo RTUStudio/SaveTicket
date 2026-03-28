@@ -1,4 +1,4 @@
-package kr.rtustudio.saveticket.listener;
+package kr.rtustudio.saveticket.handler;
 
 import kr.rtustudio.saveticket.SaveTicket;
 import kr.rtustudio.saveticket.configuration.GlobalConfig;
@@ -36,7 +36,7 @@ public class PlayerDeath extends RSListener<SaveTicket> {
                 e.setKeepLevel(config.isKeepLevel());
                 e.getDrops().clear();
                 e.setDroppedExp(0);
-                chat().announce(player, getMessage().get(player, "trigger"));
+                notifier.announce(player, message.get(player, "trigger"));
             }
         } else {
             if (manager.getMap().getOrDefault(player.getUniqueId(), false)) {
@@ -45,7 +45,7 @@ public class PlayerDeath extends RSListener<SaveTicket> {
                 e.setKeepLevel(config.isKeepLevel());
                 e.getDrops().clear();
                 e.setDroppedExp(0);
-                chat().announce(player, getMessage().get(player, "trigger"));
+                notifier.announce(player, message.get(player, "trigger"));
             }
         }
     }

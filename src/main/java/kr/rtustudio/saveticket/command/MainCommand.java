@@ -3,7 +3,7 @@ package kr.rtustudio.saveticket.command;
 import kr.rtustudio.saveticket.SaveTicket;
 import kr.rtustudio.saveticket.configuration.GlobalConfig;
 import kr.rtustudio.framework.bukkit.api.command.RSCommand;
-import kr.rtustudio.framework.bukkit.api.command.RSCommandData;
+import kr.rtustudio.framework.bukkit.api.command.CommandArgs;
 
 public class MainCommand extends RSCommand<SaveTicket> {
 
@@ -12,8 +12,8 @@ public class MainCommand extends RSCommand<SaveTicket> {
     }
 
     @Override
-    public void reload(RSCommandData data) {
-        getPlugin().reloadConfiguration(GlobalConfig.class);
+    public void reload(CommandArgs args) {
+        plugin.reloadConfiguration(GlobalConfig.class);
     }
 
 }

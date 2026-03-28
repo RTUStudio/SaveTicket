@@ -1,8 +1,10 @@
 package kr.rtustudio.saveticket.manager;
 
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+
 import kr.rtustudio.saveticket.SaveTicket;
-import kr.rtustudio.framework.bukkit.api.platform.JSON;
-import kr.rtustudio.framework.bukkit.api.storage.Storage;
+import kr.rtustudio.storage.JSON;
+import kr.rtustudio.storage.Storage;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
@@ -15,13 +17,13 @@ public class StatusManager {
 
     private final SaveTicket plugin;
     @Getter
-    private final Map<UUID, Boolean> map = new HashMap<>();
+    private final Map<UUID, Boolean> map = new Object2ObjectOpenHashMap<>();
 
     public void addPlayer(UUID uuid) {
-        Storage storage = plugin.getStorage();
-        storage.get("Status", JSON.of("uuid", uuid.toString())).thenAccept(result -> {
+        Storage storage = plugin.getStorage("Status");
+        storage.get(JSON.of("uuid", uuid.toString())).thenAccept(result -> {
             if (result == null || result.isEmpty()) {
-                storage.add("Status", JSON.of("uuid", uuid.toString()).append("keep", false).get());
+                storage.add(JSON.of("uuid", uuid.toString()).append("keep", false));
                 map.put(uuid, false);
             } else map.put(uuid, result.get(0).get("keep").getAsBoolean());
         });
@@ -32,14 +34,14 @@ public class StatusManager {
     }
 
     public void activate(UUID uuid) {
-        Storage storage = plugin.getStorage();
-        storage.set("Status", JSON.of("uuid", uuid.toString()), JSON.of("keep", true));
+        Storage storage = plugin.getStorage("Status");
+        storage.set(JSON.of("uuid", uuid.toString()), JSON.of("keep", true));
         map.put(uuid, true);
     }
 
     public void deactivate(UUID uuid) {
-        Storage storage = plugin.getStorage();
-        storage.set("Status", JSON.of("uuid", uuid.toString()), JSON.of("keep", false));
+        Storage storage = plugin.getStorage("Status");
+        storage.set(JSON.of("uuid", uuid.toString()), JSON.of("keep", false));
         map.put(uuid, false);
     }
 
