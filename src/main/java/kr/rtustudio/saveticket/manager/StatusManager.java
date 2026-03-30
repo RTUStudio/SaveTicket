@@ -1,26 +1,25 @@
 package kr.rtustudio.saveticket.manager;
 
 import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-
 import kr.rtustudio.saveticket.SaveTicket;
 import kr.rtustudio.storage.JSON;
 import kr.rtustudio.storage.Storage;
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
 
-import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
-@RequiredArgsConstructor
 public class StatusManager {
 
-    private final SaveTicket plugin;
+    private final Storage storage;
     @Getter
     private final Map<UUID, Boolean> map = new Object2ObjectOpenHashMap<>();
 
+    public StatusManager(SaveTicket plugin) {
+        this.storage = plugin.getStorage("Status");
+    }
+
     public void addPlayer(UUID uuid) {
-        Storage storage = plugin.getStorage("Status");
         storage.get(JSON.of("uuid", uuid.toString())).thenAccept(result -> {
             if (result == null || result.isEmpty()) {
                 storage.add(JSON.of("uuid", uuid.toString()).append("keep", false));
@@ -34,13 +33,11 @@ public class StatusManager {
     }
 
     public void activate(UUID uuid) {
-        Storage storage = plugin.getStorage("Status");
         storage.set(JSON.of("uuid", uuid.toString()), JSON.of("keep", true));
         map.put(uuid, true);
     }
 
     public void deactivate(UUID uuid) {
-        Storage storage = plugin.getStorage("Status");
         storage.set(JSON.of("uuid", uuid.toString()), JSON.of("keep", false));
         map.put(uuid, false);
     }

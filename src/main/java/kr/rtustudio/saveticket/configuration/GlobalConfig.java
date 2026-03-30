@@ -1,17 +1,23 @@
 package kr.rtustudio.saveticket.configuration;
 
-import kr.rtustudio.configurate.objectmapping.meta.Comment;
 import kr.rtustudio.configurate.model.ConfigurationPart;
+import kr.rtustudio.configurate.objectmapping.meta.Comment;
 import lombok.Getter;
 
 @Getter
-@SuppressWarnings({"unused", "FieldMayBeFinal"})
+@SuppressWarnings({
+        "unused",
+        "CanBeFinal",
+        "FieldCanBeLocal",
+        "FieldMayBeFinal",
+        "InnerClassMayBeStatic"
+})
 public class GlobalConfig extends ConfigurationPart {
 
     @Comment("""
             Inventory protection trigger item
             인벤토리 보호 트리거 아이템
-
+            
             Vanilla: minecraft:item_type
             Itemsadder: itemsadder:category:item
             Oraxen: oraxen:item
@@ -21,7 +27,7 @@ public class GlobalConfig extends ConfigurationPart {
     @Comment("""
             true: Consume the item by right-clicking to register inventory save
             true: 아이템을 우클릭으로 소모하여 인벤 세이브를 등록합니다
-
+            
             false: Automatically consume the item in the inventory to protect the inventory
             false: 인벤토리에 가지고 있으면 자동으로 소모하여 인벤토리를 보호합니다""")
     private boolean autoProtect = true;

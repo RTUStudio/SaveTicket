@@ -1,12 +1,11 @@
 package kr.rtustudio.saveticket.integration;
 
+import kr.rtustudio.framework.bukkit.api.integration.wrapper.PlaceholderArgs;
+import kr.rtustudio.framework.bukkit.api.integration.wrapper.PlaceholderWrapper;
 import kr.rtustudio.saveticket.SaveTicket;
 import kr.rtustudio.saveticket.manager.StatusManager;
-import kr.rtustudio.framework.bukkit.api.integration.wrapper.PlaceholderWrapper;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
-
-import kr.rtustudio.framework.bukkit.api.integration.wrapper.PlaceholderArgs;
 
 public class PlaceholderAPI extends PlaceholderWrapper<SaveTicket> {
 

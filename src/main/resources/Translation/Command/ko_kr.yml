@@ -2,3 +2,4 @@ saveticket:
   name: "인벤보호"
   description: "SaveTicket 메인 명령어"
   usage: "/인벤보호"
+

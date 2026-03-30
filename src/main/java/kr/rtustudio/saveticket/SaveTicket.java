@@ -1,14 +1,14 @@
 package kr.rtustudio.saveticket;
 
+import kr.rtustudio.configurate.model.ConfigPath;
+import kr.rtustudio.framework.bukkit.api.RSPlugin;
 import kr.rtustudio.saveticket.command.MainCommand;
 import kr.rtustudio.saveticket.configuration.GlobalConfig;
 import kr.rtustudio.saveticket.handler.ItemInteract;
 import kr.rtustudio.saveticket.handler.PlayerDeath;
 import kr.rtustudio.saveticket.handler.PlayerJoinQuit;
-import kr.rtustudio.saveticket.manager.StatusManager;
 import kr.rtustudio.saveticket.integration.PlaceholderAPI;
-import kr.rtustudio.configurate.model.ConfigPath;
-import kr.rtustudio.framework.bukkit.api.RSPlugin;
+import kr.rtustudio.saveticket.manager.StatusManager;
 import lombok.Getter;
 
 public class SaveTicket extends RSPlugin {

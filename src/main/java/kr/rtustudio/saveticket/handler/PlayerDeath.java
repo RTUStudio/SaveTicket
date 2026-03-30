@@ -1,10 +1,10 @@
 package kr.rtustudio.saveticket.handler;
 
+import kr.rtustudio.framework.bukkit.api.listener.RSListener;
+import kr.rtustudio.framework.bukkit.api.registry.CustomItems;
 import kr.rtustudio.saveticket.SaveTicket;
 import kr.rtustudio.saveticket.configuration.GlobalConfig;
 import kr.rtustudio.saveticket.manager.StatusManager;
-import kr.rtustudio.framework.bukkit.api.listener.RSListener;
-import kr.rtustudio.framework.bukkit.api.registry.CustomItems;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.entity.PlayerDeathEvent;
@@ -23,31 +23,26 @@ public class PlayerDeath extends RSListener<SaveTicket> {
     }
 
     @EventHandler
-    public void onPlayerDeath(PlayerDeathEvent e) {
+    private void onPlayerDeath(PlayerDeathEvent e) {
         Player player = e.getEntity();
         String item = config.getItem();
+        
         if (config.isAutoProtect()) {
             ItemStack itemStack = CustomItems.from(item);
             if (itemStack == null) return;
-            if (player.getInventory().containsAtLeast(itemStack, 1)) {
-                manager.deactivate(player.getUniqueId());
-                player.getInventory().removeItem(itemStack);
-                e.setKeepInventory(config.isKeepInventory());
-                e.setKeepLevel(config.isKeepLevel());
-                e.getDrops().clear();
-                e.setDroppedExp(0);
-                notifier.announce(player, message.get(player, "trigger"));
-            }
+            if (!player.getInventory().containsAtLeast(itemStack, 1)) return;
+            
+            player.getInventory().removeItem(itemStack);
         } else {
-            if (manager.getMap().getOrDefault(player.getUniqueId(), false)) {
-                manager.deactivate(player.getUniqueId());
-                e.setKeepInventory(config.isKeepInventory());
-                e.setKeepLevel(config.isKeepLevel());
-                e.getDrops().clear();
-                e.setDroppedExp(0);
-                notifier.announce(player, message.get(player, "trigger"));
-            }
+            if (!manager.getMap().getOrDefault(player.getUniqueId(), false)) return;
         }
+
+        manager.deactivate(player.getUniqueId());
+        e.setKeepInventory(config.isKeepInventory());
+        e.setKeepLevel(config.isKeepLevel());
+        e.getDrops().clear();
+        e.setDroppedExp(0);
+        notifier.announce(player, message.get(player, "trigger"));
     }
 
 //    private int first(ItemStack item, ItemStack[] inventory) {
